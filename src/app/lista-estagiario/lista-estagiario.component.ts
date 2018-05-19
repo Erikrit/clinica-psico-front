@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-estagiario.component.css']
 })
 export class ListaEstagiarioComponent implements OnInit {
-
+  public monitorLink: string = 'cadastro';
   constructor() { }
 
   ngOnInit() {

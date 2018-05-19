@@ -9,13 +9,13 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="matriculaInput">Matrícula</label>
-              <input type="text" class="form-control" id="matriculaInput" placeholder="Matrícula">
+              <input type="text" (keyup)="setMatricula($event)"  class="form-control" id="matriculaInput" placeholder="Matrícula">
             </div>
           </div>
           <div class="col-sm-8">
             <div class="form-group">
               <label for="nomeCompletoInput">Nome Completo</label>
-              <input type="text" class="form-control" id="nomeCompletoInput" placeholder="Nome Completo">
+              <input type="text" (keyup)="setNomeCompleto($event)" class="form-control" id="nomeCompletoInput" placeholder="Nome Completo">
             </div>
           </div>
         </div>
@@ -23,19 +23,19 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="telefoneInput">Telefone</label>
-              <input type="text" class="form-control" id="telefoneInput" placeholder="(xx) - xxxx - xxxx">
+              <input type="text" (keyup)="setTelefone($event)" class="form-control" id="telefoneInput" placeholder="(xx) - xxxx - xxxx">
             </div>
           </div>
           <div class="col-sm-3">
             <div class="form-group">
               <label for="celular">Celular/Whatsapp</label>
-              <input type="text" class="form-control" id="celular">
+              <input type="text" (keyup)="setCelular($event)" class="form-control" id="celular">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="email">E-mail</label>
-              <input type="text" class="form-control" id="email">
+              <input type="text" (keyup)="setEmail($event)" class="form-control" id="email">
             </div>
           </div>
         </div>
@@ -43,30 +43,39 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="turno">Turno</label>
-              <select name="" id="turno" class="form-control">
-                <option value="">MATUTINO</option>
-                <option value="">VESPERTINO</option>
-                <option value="">NOTURNO</option>
+              <select (change)="setTurno($event)" id="turno" class="form-control">
+                <option value="MATUTINO">MATUTINO</option>
+                <option value="VESPERTINO">VESPERTINO</option>
+                <option value="NOTURNO">NOTURNO</option>
               </select>
             </div>
           </div>
           <div class="col-sm-2">
             <div class="form-group">
               <label for="periodo">Período</label>
-              <input type="text" class="form-control" id="periodo">
+              <input type="text" (keyup)="setPeriodo($event)" class="form-control" id="periodo">
             </div>
           </div>
           <div class="col-sm-6">
             <div class="form-group">
               <label for="tipo-estagio">Tipo de Estágio</label>
-              <select name="" id="" class="form-control">
+              <select (change)="setTipoEstagio($event)" name="" id="" class="form-control">
                 <option value="">OBRIGATÓRIO</option>
                 <option value="">NÃO OBRIGATÓRIO</option>
               </select>
             </div>
           </div>
         </div>
+        <div class="row ">
+          <div class="col-sm-4 offset-sm-8">
+            <button class="btn btn-primary">Editar</button>
+            <button class="btn btn-success">Salvar</button>
+            <button class="btn btn-danger">Cancelar</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+{{estagiario | json}}
