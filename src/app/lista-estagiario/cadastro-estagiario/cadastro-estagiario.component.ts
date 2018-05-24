@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Estagiario } from '../../model/estagiario.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { EstagiarioService } from '../../service/estagiario.service';
 
 @Component({
   selector: 'app-cadastro-estagiario',
@@ -7,10 +9,12 @@ import { Estagiario } from '../../model/estagiario.model';
   styleUrls: ['./cadastro-estagiario.component.css']
 })
 export class CadastroEstagiarioComponent implements OnInit {
- 
-  public estagiario:Estagiario = new Estagiario();
- 
-  constructor() { }
+
+  public estagiario: Estagiario = new Estagiario();
+  
+  constructor( private estagiarioService: EstagiarioService ) {
+
+  }
 
   ngOnInit() {
   }
@@ -32,19 +36,26 @@ export class CadastroEstagiarioComponent implements OnInit {
   }
 
   setEmail(event: any): void {
-    this.estagiario.email= event.target.value;
+    this.estagiario.email = event.target.value;
   }
 
   setPeriodo(event: any): void {
     this.estagiario.periodo = +event.target.value;
   }
 
-  setTipoEstagio(event:any): void {
+  setTipoEstagio(event: any): void {
     this.estagiario.tipoEstagio = event.target.value;
   }
-  
+
   setTurno(event: any): void {
     this.estagiario.turno = event.target.value;
+  }
+
+  gravarEstagiario(): void {
+    this.estagiarioService.gravarEstagiario(this.estagiario)
+      .subscribe(estagiario => {
+        console.log('gravado com sucesso');
+      });
   }
 
 }

@@ -3,14 +3,16 @@
     <a  
     class="nav-link" 
     [class.active]="monitorLink === 'cadastro'" 
-    (click)="monitorLink = 'cadastro'">
+    (click)="monitorLink = 'cadastro'"
+    href="#">
         CADASTRO
     </a> 
   </li>
   <li class="nav-item">
     <a class="nav-link" 
     [class.active]="monitorLink === 'lista'"
-    (click)="monitorLink = 'lista'">
+    (click)="monitorLink = 'lista'"
+    href="#">
       LISTA
     </a>
   </li>
@@ -18,6 +20,7 @@
     <a class="nav-link"
     [class.active]="monitorLink === 'horario'"
     (click)="monitorLink = 'horario'"
+    href="#"
     >
     CADASTRO DE HORÁRIO
   </a>
@@ -34,5 +37,4 @@
   <div *ngSwitchCase="'horario'">
     NESSA ABA TAMBÉM DEVERIA APARECER O HORÁRIO
   </div>
-
 </div>

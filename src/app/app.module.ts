@@ -7,7 +7,10 @@ import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
 import { ListaEstagiarioComponent } from './lista-estagiario/lista-estagiario.component';
 import { CadastroEstagiarioComponent } from './lista-estagiario/cadastro-estagiario/cadastro-estagiario.component';
-
+import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
+import { EstagiarioService } from './service/estagiario.service';
+import { HttpClient, HttpHandler  } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,11 @@ import { CadastroEstagiarioComponent } from './lista-estagiario/cadastro-estagia
     CadastroEstagiarioComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [EstagiarioService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
