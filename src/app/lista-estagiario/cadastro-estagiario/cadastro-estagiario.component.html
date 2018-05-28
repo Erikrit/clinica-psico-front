@@ -4,8 +4,10 @@
       Cadastro de Estagiário
     </div>
     <div class="card-body">
-      <div class="container">
-           <div class="row">
+      <form [formGroup]="formulario"
+            (ngSubmit)="onSubmit()">
+        <div class="container">
+          <div class="row">
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="matriculaInput">Matrícula</label>
@@ -13,7 +15,8 @@
                        (keyup)="setMatricula($event)"
                        class="form-control"
                        id="matriculaInput"
-                       placeholder="Matrícula">
+                       placeholder="Matrícula"
+                       formControlName="matricula">
               </div>
             </div>
             <div class="col-sm-8">
@@ -23,7 +26,8 @@
                        (keyup)="setNomeCompleto($event)"
                        class="form-control"
                        id="nomeCompletoInput"
-                       placeholder="Nome Completo">
+                       placeholder="Nome Completo"
+                       formControlName="nomeCompleto">
               </div>
             </div>
           </div>
@@ -35,7 +39,9 @@
                        (keyup)="setTelefone($event)"
                        class="form-control"
                        id="telefoneInput"
-                       placeholder="(xx) - xxxx - xxxx">
+                       placeholder="(xx) - xxxx - xxxx"
+                       formControlName="telefone">
+
               </div>
             </div>
             <div class="col-sm-3">
@@ -44,7 +50,8 @@
                 <input type="text"
                        (keyup)="setCelular($event)"
                        class="form-control"
-                       id="celular">
+                       id="celular"
+                       formControlName="celular">
               </div>
             </div>
             <div class="col-sm-6">
@@ -53,7 +60,8 @@
                 <input type="text"
                        (keyup)="setEmail($event)"
                        class="form-control"
-                       id="email">
+                       id="email"
+                       formControlName="email">
               </div>
             </div>
           </div>
@@ -63,7 +71,8 @@
                 <label for="turno">Turno</label>
                 <select (change)="setTurno($event)"
                         id="turno"
-                        class="form-control">
+                        class="form-control"
+                        formControlName="turno">
                 <option value="MATUTINO">MATUTINO</option>
                 <option value="VESPERTINO">VESPERTINO</option>
                 <option value="NOTURNO">NOTURNO</option>
@@ -76,7 +85,8 @@
                 <input type="text"
                        (keyup)="setPeriodo($event)"
                        class="form-control"
-                       id="periodo">
+                       id="periodo"
+                       formControlName="periodo">
               </div>
             </div>
             <div class="col-sm-6">
@@ -84,8 +94,10 @@
                 <label for="tipo-estagio">Tipo de Estágio</label>
                 <select (change)="setTipoEstagio($event)"
                         name=""
-                        id=""
-                        class="form-control">
+                        id="tipo-estagio"
+                        class="form-control"
+                        formControlName="tipoEstagio">
+                <option value=""></option>
                 <option value="OBRIGATORIO">OBRIGATÓRIO</option>
                 <option value="NAO_OBRIGATORIO">NÃO OBRIGATÓRIO</option>
               </select>
@@ -94,14 +106,16 @@
           </div>
           <div class="row ">
             <div class="col-sm-4 offset-sm-8">
-              <button class="btn btn-primary">Editar</button>
-              <button class="btn btn-success" (click)="gravarEstagiario()">Salvar</button>
-              <button class="btn btn-danger">Cancelar</button>
+              <button type="button"
+                      class="btn btn-primary">Editar</button>
+              <button type="submit"
+                      class="btn btn-success">Salvar</button>
+              <button type="button"
+                      class="btn btn-danger">Cancelar</button>
             </div>
           </div>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-
-{{estagiario | json}}

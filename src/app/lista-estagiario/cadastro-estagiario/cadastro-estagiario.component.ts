@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { Estagiario } from '../../model/estagiario.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormGroupDirective, Validators } from '@angular/forms'; //1º Importar
 import { EstagiarioService } from '../../service/estagiario.service';
 
 @Component({
@@ -10,13 +10,34 @@ import { EstagiarioService } from '../../service/estagiario.service';
 })
 export class CadastroEstagiarioComponent implements OnInit {
 
+
+  //2º Passo
+  formulario: FormGroup;
+
+
   public estagiario: Estagiario = new Estagiario();
   
-  constructor( private estagiarioService: EstagiarioService ) {
+  //3º Passo: Adicionar o formBuilder
+  constructor( 
+    private estagiarioService: EstagiarioService,
+    private formBuilder: FormBuilder
+   ) {
 
   }
 
+  //2º Passo
   ngOnInit() {
+    this.formulario = this.formBuilder.group({
+      matricula: [null],
+      nomeCompleto: [null],
+      telefone: [null],
+      celular: [null],
+      email: [null ],
+      turno:[null],
+      periodo: [null],
+      tipoEstagio: [null],
+    }); 
+    
   }
 
   setMatricula(event: any): void {
@@ -33,6 +54,7 @@ export class CadastroEstagiarioComponent implements OnInit {
 
   setCelular(event: any): void {
     this.estagiario.celular = event.target.value;
+ //   this.formulario.controls.celular.setValue(event.target.value, {emitEvent: false} )
   }
 
   setEmail(event: any): void {
@@ -52,10 +74,12 @@ export class CadastroEstagiarioComponent implements OnInit {
   }
 
   gravarEstagiario(): void {
-    this.estagiarioService.gravarEstagiario(this.estagiario)
-      .subscribe(estagiario => {
-        console.log('gravado com sucesso');
-      });
+//    this.estagiarioService.gravarEstagiario(this.estagiario)
+//      .subscribe(msg => {
+//        console.log('gravado com sucesso');
+//      });
+    console.log(this.formulario.value);
   }
+
 
 }

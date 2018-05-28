@@ -9,21 +9,16 @@ export class EstagiarioService {
 
   private url: string = 'http://localhost:8080/api/estagiario'
   
-   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
-  gravarEstagiario(estagiario: Estagiario): Observable<Estagiario> {
+  gravarEstagiario(estagiario: Estagiario): Observable<string> {
     console.log('Estagiario: ', estagiario);
-    return this.httpClient.post<Estagiario>(this.url, estagiario).pipe(
-      tap((estagiario: Estagiario) => console.log(`adicionado estagiario/ nome=${estagiario.nomeCompleto}`)),
-      catchError(this.handleError<Estagiario>()),
-    );
+    return this.httpClient.post<string>(this.url, estagiario);
   }
+
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
